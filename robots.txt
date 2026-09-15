@@ -1,0 +1,44 @@
+# robots.txt — Nutri Deividi S.F.
+# https://nutrideividi.com.br/robots.txt
+
+# Motores de busca tradicionais
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawlers de IA / LLMs — permitidos para indexação semântica (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Omgili
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookExternalHit
+Allow: /
+
+# Regra geral
+User-agent: *
+Allow: /
+Disallow: /assets/video/
+
+Sitemap: https://nutrideividi.com.br/sitemap.xml
