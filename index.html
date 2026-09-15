@@ -302,13 +302,23 @@
   </p>
  
   <div class="video-wrap" id="videoWrap">
-    <iframe
-      id="yt"
-      src="https://www.youtube-nocookie.com/embed/iqmBkYXhDzE?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&controls=1&enablejsapi=1"
-      title="Apresentação Consultoria Nutri Deividi S.F."
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+    <!--
+      Coloque o arquivo do vídeo em: assets/video/apresentacao.mp4
+      Formatos suportados: .mp4 (H.264) — recomendado
+      Opcional: adicione .webm para melhor compatibilidade com Firefox
+    -->
+    <video
+      id="mainVideo"
+      src="assets/video/apresentacao.mp4"
+      playsinline
+      autoplay
+      muted
+      loop="false"
+      preload="metadata"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border:none;">
+      <source src="assets/video/apresentacao.mp4" type="video/mp4">
+      <source src="assets/video/apresentacao.webm" type="video/webm">
+    </video>
  
     <button class="sound-btn" id="soundBtn" aria-label="Ativar som">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -346,11 +356,10 @@
   <script>
     // ═══════════════════════════════════════════════
     // CONFIGURAÇÃO
-    const VIDEO_ID         = 'iqmBkYXhDzE';
-    const VIDEO_DURATION_S = 102;   // duração em segundos
-    const TRIGGER_AT       = 0.30;  // CTA aparece aos 30% do vídeo
+    const TRIGGER_AT = 0.30; // CTA aparece aos 30% do vídeo
     // ═══════════════════════════════════════════════
  
+    const video        = document.getElementById('mainVideo');
     const ctaWrap      = document.getElementById('ctaWrap');
     const progressBar  = document.getElementById('progressBar');
     const progressFill = document.getElementById('progressFill');
@@ -359,9 +368,7 @@
     const logoImg      = document.getElementById('logoImg');
  
     let ctaShown = false;
-    let player   = null;
     let ticker   = null;
-    let startTime = null;
  
     // Mostra logo apenas se o arquivo existir
     if (logoImg && logoWrap) {
@@ -377,60 +384,40 @@
       ctaWrap.classList.add('visible');
     }
  
-    function startTicker(getTime) {
-      if (ticker) return;
-      progressBar.classList.add('active');
-      startTime = Date.now();
-      ticker = setInterval(() => {
-        const t   = getTime();
-        const pct = Math.min((t / VIDEO_DURATION_S) * 100, 100);
-        progressFill.style.width = pct + '%';
-        if (t >= VIDEO_DURATION_S * TRIGGER_AT) showCTA();
-        if (t >= VIDEO_DURATION_S) clearInterval(ticker);
-      }, 250);
-    }
- 
-    // Botão de som
+    // Botão de som — desmutar e sumir
     soundBtn.addEventListener('click', () => {
-      if (player && typeof player.unMute === 'function') {
-        try { player.unMute(); player.setVolume(100); } catch(e) {}
-      }
+      video.muted = false;
+      video.volume = 1;
       soundBtn.classList.add('hidden');
     });
  
-    function checkMuteState() {
-      const check = setInterval(() => {
-        if (!player || typeof player.isMuted !== 'function') return;
-        if (!player.isMuted()) { soundBtn.classList.add('hidden'); clearInterval(check); }
-      }, 500);
-    }
+    // Barra de progresso e gatilho do CTA sincronizados com o vídeo real
+    video.addEventListener('loadedmetadata', () => {
+      progressBar.classList.add('active');
+    });
  
-    // Fallback para file:// (sem API cross-origin)
-    if (window.location.protocol === 'file:') {
-      startTicker(() => (Date.now() - startTime) / 1000);
-    } else {
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.head.appendChild(tag);
+    video.addEventListener('timeupdate', () => {
+      if (!video.duration) return;
+      const pct = (video.currentTime / video.duration) * 100;
+      progressFill.style.width = pct + '%';
+      if (video.currentTime >= video.duration * TRIGGER_AT) showCTA();
+    });
  
-      window.onYouTubeIframeAPIReady = function () {
-        player = new YT.Player('yt', {
-          events: {
-            onReady(e) {
-              try { e.target.playVideo(); } catch(err) {}
-            },
-            onStateChange(e) {
-              if (e.data === 1) { // PLAYING
-                startTicker(() => {
-                  try { return player.getCurrentTime() || 0; } catch(e) { return 0; }
-                });
-                checkMuteState();
-              }
-            }
-          }
-        });
-      };
-    }
+    // Se o usuário desmutar pelo controle nativo do browser, some o botão
+    video.addEventListener('volumechange', () => {
+      if (!video.muted && video.volume > 0) soundBtn.classList.add('hidden');
+    });
+ 
+    // Tenta autoplay — se bloqueado pelo browser, aguarda interação
+    video.play().catch(() => {
+      // Autoplay bloqueado — exibe indicação visual para o usuário clicar
+      soundBtn.textContent = '▶ Toque para reproduzir';
+      soundBtn.addEventListener('click', () => {
+        video.muted = false;
+        video.play();
+        soundBtn.classList.add('hidden');
+      }, { once: true });
+    });
   </script>
 </body>
 </html>
