@@ -151,11 +151,11 @@
       margin-bottom: 28px;
     }
  
-    /* — Container do vídeo — */
+    /* — Container do vídeo (Ajustado para formato normal 16:9) — */
     .video-wrap {
       position: relative;
       width: 100%;
-      max-width: 380px;
+      max-width: 800px; /* Ajustado para vídeo horizontal */
       border-radius: 8px;
       overflow: hidden;
       background: #000;
@@ -164,7 +164,7 @@
     .video-wrap::before {
       content: '';
       display: block;
-      padding-top: 177.78%; /* 9:16 */
+      padding-top: 56.25%; /* 16:9 - Proporção de vídeo tradicional */
     }
     .video-wrap iframe {
       position: absolute;
@@ -210,7 +210,7 @@
     /* — Barra de progresso — */
     .progress-bar {
       width: 100%;
-      max-width: 380px;
+      max-width: 800px; /* Ajustado para acompanhar o container do vídeo */
       height: 2px;
       background: rgba(255,255,255,0.06);
       border-radius: 0 0 4px 4px;
@@ -302,7 +302,7 @@
   <div class="video-wrap" id="videoWrap">
     <iframe
       id="yt"
-      src="https://www.youtube-nocookie.com/embed/iqmBkYXhDzE?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&controls=1&enablejsapi=1"
+      src="https://www.youtube-nocookie.com/embed/U8vD_8hgioM?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&controls=1&enablejsapi=1"
       title="Apresentação Consultoria Nutri Deividi S.F."
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen>
@@ -344,9 +344,9 @@
   <script>
     // ═══════════════════════════════════════════════
     // CONFIGURAÇÃO
-    const VIDEO_ID         = 'iqmBkYXhDzE';
-    const VIDEO_DURATION_S = 102;   // duração em segundos
-    const TRIGGER_AT       = 0.30;  // CTA aparece aos 30% do vídeo
+    const VIDEO_ID         = 'U8vD_8hgioM';
+    const VIDEO_DURATION_S = 59;    // duração em segundos (novo vídeo)
+    const TRIGGER_AT       = 20 / 59;  // Aparece exatamente aos 20 segundos
     // ═══════════════════════════════════════════════
  
     const ctaWrap      = document.getElementById('ctaWrap');
@@ -431,4 +431,3 @@
   </script>
 </body>
 </html>
- 
