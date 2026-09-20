@@ -377,14 +377,29 @@
       }, 250);
     }
 
-    // Botão de som — stopPropagation impede o clique de chegar ao iframe
+    // Botão de som
+    // No mobile, unMute() via API é bloqueado pelo browser.
+    // Solução: recarregar o iframe com mute=0 na URL, preservando o tempo atual.
     soundBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       e.preventDefault();
-      if (player && typeof player.unMute === 'function') {
-        try { player.unMute(); player.setVolume(100); } catch(e) {}
+
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (!isMobile && player && typeof player.unMute === 'function') {
+        // Desktop: API funciona normalmente
+        try { player.unMute(); player.setVolume(100); } catch(err) {}
+        soundBtn.classList.add('hidden');
+      } else {
+        // Mobile: recarrega iframe com mute=0 e retoma do tempo atual
+        const currentTime = (player && typeof player.getCurrentTime === 'function')
+          ? Math.floor(player.getCurrentTime()) : 0;
+        const iframe = document.getElementById('yt');
+        const base = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID;
+        const params = '?autoplay=1&mute=0&playsinline=1&rel=0&modestbranding=1&controls=1&enablejsapi=1&start=' + currentTime;
+        iframe.src = base + params;
+        soundBtn.classList.add('hidden');
       }
-      soundBtn.classList.add('hidden');
     });
 
     function checkMuteState() {
