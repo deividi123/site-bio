@@ -1065,49 +1065,7 @@
   Nutri Deividi S.F. &nbsp;·&nbsp; Valentim Gentil, SP &nbsp;·&nbsp; Desde 2017
 </footer>
 
-<script>
-  // ── Carrossel de depoimentos ──────────────────
-  const carousel  = document.getElementById('carousel');
-  const dots      = document.querySelectorAll('.carousel-dot');
 
-  if (carousel && dots.length) {
-
-    // Drag/arraste no desktop
-    let isDragging = false, startX = 0, scrollStart = 0;
-
-    carousel.addEventListener('mousedown', e => {
-      isDragging = true;
-      startX = e.pageX;
-      scrollStart = carousel.scrollLeft;
-      carousel.classList.add('grabbing');
-    });
-    document.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      carousel.scrollLeft = scrollStart - (e.pageX - startX);
-    });
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      carousel.classList.remove('grabbing');
-    });
-
-    // Atualiza dot ativo conforme scroll
-    carousel.addEventListener('scroll', () => {
-      const slides    = carousel.querySelectorAll('.print-slide');
-      const slideW    = slides[0].offsetWidth + 20; // gap = 20px
-      const idx       = Math.round(carousel.scrollLeft / slideW);
-      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    }, { passive: true });
-
-    // Clique nos dots
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const slides = carousel.querySelectorAll('.print-slide');
-        const slideW = slides[0].offsetWidth + 20;
-        carousel.scrollTo({ left: parseInt(dot.dataset.index) * slideW, behavior: 'smooth' });
-      });
-    });
-  }
-</script>
 
 <script>
   const carousel = document.getElementById('carousel');
