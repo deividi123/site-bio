@@ -9,20 +9,20 @@
   <meta name="description" content="Consultoria online de nutrição e treino com Deividi S. Ferreira. Método de atleta adaptado para sua rotina real. Resultado estético sem dietas extremas.">
   <meta name="author" content="Deividi S. Ferreira">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://www.nutrideividi.com.br/">
+  <link rel="canonical" href="https://nutrideividi.com.br/consultoria/">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Consultoria Online de Nutrição e Treino | Nutri Deividi S.F.">
   <meta property="og:description" content="Método de atleta adaptado para sua rotina real. Nutrição e treino sob medida, com suporte direto — sem extremismos.">
-  <meta property="og:url" content="https://www.nutrideividi.com.br/">
-  <meta property="og:image" content="https://www.nutrideividi.com.br/assets/images/autoridade.webp">
+  <meta property="og:url" content="https://nutrideividi.com.br/consultoria/">
+  <meta property="og:image" content="https://nutrideividi.com.br/assets/images/profile.webp">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Consultoria Online de Nutrição e Treino | Nutri Deividi S.F.">
   <meta name="twitter:description" content="Método de atleta adaptado para sua rotina real. Nutrição e treino sob medida, com suporte direto — sem extremismos.">
-  <meta name="twitter:image" content="https://www.nutrideividi.com.br/assets/images/autoridade.webp">
+  <meta name="twitter:image" content="https://nutrideividi.com.br/assets/images/profile.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,20 +34,20 @@
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://www.nutrideividi.com.br/#person",
+        "@id": "https://nutrideividi.com.br/#person",
         "name": "Deividi S. Ferreira",
         "alternateName": ["Nutri Deividi", "Nutri Deividi S.F."],
         "jobTitle": "Nutricionista Esportivo e Preparador de Fisiculturistas",
         "description": "Nutricionista esportivo atuando desde 2017, especializado em transformação física para atletas e pessoas comuns através de consultoria online.",
-        "url": "https://www.nutrideividi.com.br/",
+        "url": "https://nutrideividi.com.br/",
         "knowsAbout": ["Nutrição Esportiva","Hipertrofia","Definição Estética","Preparação de Atletas","Periodização","Consultoria Online"]
       },
       {
         "@type": "ProfessionalService",
-        "@id": "https://www.nutrideividi.com.br/",
+        "@id": "https://nutrideividi.com.br/#consultoria",
         "name": "Consultoria Online — Nutri Deividi S.F.",
-        "url": "https://www.nutrideividi.com.br/",
-        "provider": { "@id": "https://www.nutrideividi.com.br/#person" },
+        "url": "https://nutrideividi.com.br/consultoria/",
+        "provider": { "@id": "https://nutrideividi.com.br/#person" },
         "serviceType": ["Consultoria Nutricional Online","Plano de Treino Online","Acompanhamento Esportivo"],
         "areaServed": { "@type": "Country", "name": "Brasil" },
         "description": "Acompanhamento online de nutrição e treino sob medida, com suporte direto de segunda a sexta.",
@@ -58,19 +58,19 @@
         "mainEntity": [
           {
             "@type": "Question", "name": "Sou iniciante, o acompanhamento serve para mim?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Sim. O método é adaptado ao seu nível atual, o estímulo e a dieta são calibrados para onde você está, não para onde você quer chegar de uma vez." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Sim. O método é adaptado ao seu nível atual — o estímulo e a dieta são calibrados para onde você está, não para onde você quer chegar de uma vez." }
           },
           {
             "@type": "Question", "name": "Como recebo a dieta e o treino?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tudo é entregue pelo aplicativo SamplaFit, com acesso pelo celular. Dieta, treino, avaliações em um só lugar." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Tudo é entregue pelo aplicativo SamplaFit, com acesso pelo celular. Dieta, treino, histórico e check-ins em um só lugar." }
           },
           {
             "@type": "Question", "name": "Tenho restrições alimentares, você adapta a dieta?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Sim. A dieta é calculada a partir do seu físico atual e das suas preferências e restrições reais, não é um plano genérico." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Sim. A dieta é calculada a partir do seu mapeamento metabólico e das suas preferências e restrições reais — não é um plano genérico." }
           },
           {
             "@type": "Question", "name": "O suporte é com você ou com uma equipe?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Você fala direto comigo, de segunda a sexta. Não tem intermediários nem equipe respondendo no seu lugar." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Direto comigo, de segunda a sexta. Não tem intermediários nem equipe respondendo no seu lugar." }
           }
         ]
       }
@@ -303,44 +303,64 @@
     #provas h2 { margin-bottom: 8px; }
     #provas > .wrap > p {
       color: var(--gray-500);
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       font-size: 17px;
     }
 
-    .prints-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .print-slot {
-      background: var(--white);
-      border-radius: 2px;
-      aspect-ratio: 9/16;
+    /* Carrossel — scroll horizontal com snap */
+    .prints-carousel {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      border: 1.5px dashed var(--gray-200);
-      color: var(--gray-500);
-      font-size: 13px;
-      text-align: center;
-      padding: 20px;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;          /* Firefox */
+      padding-bottom: 8px;
+      cursor: grab;
+    }
+    .prints-carousel::-webkit-scrollbar { display: none; }
+    .prints-carousel.grabbing { cursor: grabbing; }
+
+    .print-slide {
+      flex: 0 0 calc(33.333% - 14px); /* 3 por vez no desktop */
+      scroll-snap-align: start;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--white);
+      aspect-ratio: 9/16;
+      border: 1px solid var(--gray-200);
     }
 
-    .print-slot img {
+    .print-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 2px;
       display: block;
+      border-radius: 4px;
+      pointer-events: none; /* evita arrastar a imagem ao invés do carrossel */
     }
 
-    .print-slot-icon {
-      width: 36px;
-      height: 36px;
-      opacity: 0.3;
+    /* Indicadores de navegação */
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gray-200);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .carousel-dot.active {
+      background: var(--gold);
+      transform: scale(1.4);
     }
 
     /* ── SEÇÃO 5: AUTORIDADE ── */
@@ -602,7 +622,7 @@
     /* ── TABLET (max 768px) ── */
     @media (max-width: 768px) {
       .blocos           { grid-template-columns: 1fr; gap: 16px; }
-      .prints-grid      { grid-template-columns: 1fr 1fr; }
+      .print-slide      { flex: 0 0 calc(50% - 10px); } /* 2 por vez no tablet */
       .stats            { grid-template-columns: 1fr 1fr; gap: 24px; }
       .autoridade-inner { grid-template-columns: 1fr; gap: 40px; }
       .autoridade-photo { display: none; }
@@ -674,9 +694,9 @@
       .passo p   { font-size: 14px; }
       .metodo-cta { padding-top: 28px; margin-top: 28px; }
 
-      /* Provas */
-      .prints-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .print-slot  { padding: 14px; font-size: 12px; }
+      /* Provas — 1 por vez no mobile */
+      .prints-carousel { gap: 12px; }
+      .print-slide     { flex: 0 0 85%; } /* 1 por vez, peek do próximo */
 
       /* Autoridade */
       #autoridade { padding: 52px 0; }
@@ -737,8 +757,8 @@
 
       <div class="hero-text">
         <span class="hero-kicker">Consultoria online · Nutrição & Treino</span>
-        <h1>Perca gordura e melhore seu corpo com um plano que <em>cabe na sua rotina</em></h1>
-        <p>O método que uso com atletas de fisiculturismo, ajustado para construir o seu melhor físico sem extremismos. Nutrição e treino sob medida, com suporte direto comigo de segunda a sexta.</p>
+        <h1>Condicionamento estético de elite, <em>adaptado para a sua rotina</em></h1>
+        <p>O método exato que uso com atletas de competição, ajustado para construir o seu melhor físico sem extremismos. Nutrição e treino sob medida, com suporte direto — de segunda a sexta.</p>
         <a class="cta-btn"
            href="https://wa.me/5517991095961?text=Quero+saber+mais+sobre+a+consultoria+online"
            target="_blank" rel="noopener noreferrer">
@@ -771,21 +791,21 @@
 ════════════════════════════════════════════ -->
 <section id="problema">
   <div class="wrap">
-    <h2>Por que você treina e segue dieta há meses e o físico não muda?</h2>
-    <p>Não é falta de vontade ou esforço, te falta método. Veja o que está atrasando o seu resultado.</p>
+    <h2>Por que você treina há meses e o físico não muda?</h2>
+    <p>Não é falta de esforço. É método. Veja o que está travando o seu resultado.</p>
 
     <div class="blocos">
       <div class="bloco">
         <h3>Platô metabólico</h3>
-        <p>Seu corpo se adapta ao déficit calórico e ao treino estagnado. Sem periodização, você gasta energia para manter o que tem, não para continuar evoluindo.</p>
+        <p>Seu corpo se adapta ao déficit calórico e ao treino estagnado. Sem periodização, você gasta energia para manter o que tem — não para evoluir.</p>
       </div>
       <div class="bloco">
         <h3>Treino sem progressão real</h3>
-        <p>Treinos prontos de internet não geram hipertrofia de forma consistente. Sem sobrecarga progressiva calculada para o seu nível, seu músculo não tem estímulo para crescer.</p>
+        <p>Série de internet não gera hipertrofia de forma consistente. Sem sobrecarga progressiva calculada para o seu nível, o músculo não tem estímulo para crescer.</p>
       </div>
       <div class="bloco">
-        <h3>Dieta de difícil de manter</h3>
-        <p>Cortar calorias demais destrói suas chances de manter a dieta tempo suficiente pra evoluir e aprender a comer bem. O efeito sanfona não é falta de força de vontade, é consequência de um plano mal planejado.</p>
+        <h3>Dieta de fome que volta</h3>
+        <p>Cortar calorias demais destrói massa muscular e desacelera o metabolismo. O efeito sanfona não é falta de força de vontade — é consequência de um plano ruim.</p>
       </div>
     </div>
   </div>
@@ -797,21 +817,21 @@
 <section id="metodo">
   <div class="wrap">
     <h2>Como funciona o acompanhamento</h2>
-    <p>Quatro etapas que transformam dados reais em resultado visível, sem achismos.</p>
+    <p>Quatro etapas que transformam dados reais em resultado visível — sem achismo.</p>
 
     <div class="passos">
       <div class="passo">
         <span class="passo-num">01</span>
         <div>
-          <h3>Mapeamento do Contexto</h3>
-          <p>Antes de qualquer dieta ou treino, entendo seu histórico, rotina, restrições e preferências. O plano começa aqui... Feito para você, não para uma média genérica.</p>
+          <h3>Mapeamento Metabólico</h3>
+          <p>Antes de qualquer dieta ou treino, entendo seu histórico, rotina, restrições e metabolismo. O plano começa aqui — feito para você, não para uma média genérica.</p>
         </div>
       </div>
       <div class="passo">
         <span class="passo-num">02</span>
         <div>
           <h3>Planejamento Estratégico</h3>
-          <p>Dieta e treino personalizados entregues no aplicativo SamplaFit. Você tem acesso a tudo pelo celular: refeições, treinos e histórico de evolução.</p>
+          <p>Dieta e treino personalizados entregues pelo aplicativo SamplaFit. Você tem acesso a tudo pelo celular: refeições, séries, cargas e histórico de evolução.</p>
         </div>
       </div>
       <div class="passo">
@@ -825,7 +845,7 @@
         <span class="passo-num">04</span>
         <div>
           <h3>Suporte direto de segunda a sexta</h3>
-          <p>Você fala comigo, não com uma equipe, não com um robô. Dúvidas, ajustes de última hora e orientações em tempo real durante a semana.</p>
+          <p>Você fala comigo — não com uma equipe, não com um bot. Dúvidas, ajustes de última hora e orientações em tempo real durante a semana.</p>
         </div>
       </div>
     </div>
@@ -839,7 +859,7 @@
         </svg>
         Preencher aplicação
       </a>
-      <p class="cta-note">Vagas limitadas, pois, atendo pessoalmente cada aluno</p>
+      <p class="cta-note">Vagas limitadas — atendo pessoalmente cada aluno</p>
     </div>
   </div>
 </section>
@@ -850,28 +870,28 @@
 <section id="provas">
   <div class="wrap">
     <h2>O que dizem os alunos</h2>
-    <p>Resultados reais de quem passou pelo método... não simpatia, resultado.</p>
+    <p>Resultados reais de quem passou pelo método — não simpatia, resultado.</p>
 
-    <div class="prints-grid">
-      <!--
-        Adicione até 4 prints de WhatsApp com resultados concretos.
-        Exemplos do tipo certo: "sequei 5kg e minhas calças estão caindo",
-        "nunca comi tanto e fiquei tão seco", "bati meu PR no agachamento".
-        Salve em assets/images/print-1.webp, print-2.webp etc.
-        Proporção recomendada: 9:16 (screenshot de celular)
-      -->
-      <div class="print-slot">
-        <img src="assets/images/print-1.webp" alt="Depoimento de aluno" loading="lazy">
+    <div class="prints-carousel" id="carousel" role="list" aria-label="Depoimentos de alunos">
+      <div class="print-slide" role="listitem">
+        <img src="assets/images/print-1.webp" alt="Depoimento de aluno 1" loading="lazy" draggable="false">
       </div>
-      <div class="print-slot">
-        <img src="assets/images/print-2.webp" alt="Depoimento de aluno" loading="lazy">
+      <div class="print-slide" role="listitem">
+        <img src="assets/images/print-2.webp" alt="Depoimento de aluno 2" loading="lazy" draggable="false">
       </div>
-      <div class="print-slot">
-        <img src="assets/images/print-3.webp" alt="Depoimento de aluno" loading="lazy">
+      <div class="print-slide" role="listitem">
+        <img src="assets/images/print-3.webp" alt="Depoimento de aluno 3" loading="lazy" draggable="false">
       </div>
-      <div class="print-slot">
-        <img src="assets/images/print-4.webp" alt="Depoimento de aluno" loading="lazy">
+      <div class="print-slide" role="listitem">
+        <img src="assets/images/print-4.webp" alt="Depoimento de aluno 4" loading="lazy" draggable="false">
       </div>
+    </div>
+
+    <div class="carousel-nav" id="carouselNav" aria-hidden="true">
+      <button class="carousel-dot active" data-index="0"></button>
+      <button class="carousel-dot" data-index="1"></button>
+      <button class="carousel-dot" data-index="2"></button>
+      <button class="carousel-dot" data-index="3"></button>
     </div>
   </div>
 </section>
@@ -883,9 +903,9 @@
   <div class="wrap">
     <div class="autoridade-inner">
       <div>
-        <h2>Se eu consigo deixar um fisiculturista com 4% de gordura para subir num palco, melhorar seu físico não será um bicho de sete cabeças.</h2>
-        <p>Sou Deividi S. Ferreira, nutricionista esportivo e preparador de atletas de fisiculturismo desde 2017. Trabalho com o que há de mais exigente no condicionamento físico e aplico essa mesma precisão para quem quer resultado estético real na vida comum.</p>
-        <p>Não existe plano de internet que vai te dar o que um acompanhamento individualizado entrega. A diferença está no feeling, na periodização e nos ajustes semanais, não no plano em si.</p>
+        <h2>Se eu consigo deixar um fisiculturista com 4% de gordura para subir num palco, o seu físico é trabalho fácil.</h2>
+        <p>Sou Deividi S. Ferreira, nutricionista esportivo e preparador de atletas de fisiculturismo desde 2017. Trabalho com o que há de mais exigente no condicionamento físico — e aplico essa mesma precisão para quem quer resultado estético real na vida comum.</p>
+        <p>Não existe plano de internet que vai te dar o que um acompanhamento individualizado entrega. A diferença está na leitura do seu corpo, na periodização e nos ajustes semanais — não no plano em si.</p>
 
         <div class="stats">
           <div>
@@ -907,7 +927,7 @@
             </svg>
             Falar com o Deividi
           </a>
-          <p class="cta-note" style="color:rgba(255,255,255,0.4);">Direto comigo, sem intermediários</p>
+          <p class="cta-note" style="color:rgba(255,255,255,0.4);">Direto comigo — sem intermediários</p>
         </div>
       </div>
 
@@ -931,7 +951,7 @@
 ════════════════════════════════════════════ -->
 <section id="filtro">
   <div class="wrap">
-    <h2>Para quem é... E para quem não é</h2>
+    <h2>Para quem é — e para quem não é</h2>
 
     <div class="filtro-grid">
       <div class="filtro-col sim">
@@ -939,9 +959,9 @@
         <ul>
           <li>Treina ou quer treinar de forma consistente</li>
           <li>Está estagnado e não entende por quê</li>
-          <li>Quer resultado estético sem viver uma vida de atleta</li>
+          <li>Quer resultado estético sem viver uma dieta de atleta</li>
           <li>Está disposto a seguir um planejamento real</li>
-          <li>Quer entender o que está fazendo, não só seguir às cegas</li>
+          <li>Quer entender o que está fazendo — não só seguir cego</li>
           <li>Busca um acompanhamento de longo prazo, não uma solução de 30 dias</li>
         </ul>
       </div>
@@ -974,7 +994,7 @@
         <h3>Trimestral</h3>
         <p class="plano-desc">3 meses de acompanhamento contínuo. Ideal para quem quer começar e ver resultado real antes de um compromisso maior.</p>
         <ul class="plano-items">
-          <li>Mapeamento inicial</li>
+          <li>Mapeamento metabólico inicial</li>
           <li>Dieta e treino pelo SamplaFit</li>
           <li>Check-ins periódicos</li>
           <li>Suporte de segunda a sexta</li>
@@ -990,7 +1010,7 @@
       <div class="plano destaque">
         <div class="plano-badge">Recomendado</div>
         <h3>Semestral</h3>
-        <p class="plano-desc">6 meses, tempo suficiente para periodizar, ajustar e consolidar o resultado. Melhor custo por mês e transformação mais sólida.</p>
+        <p class="plano-desc">6 meses — tempo suficiente para periodizar, ajustar e consolidar o resultado. Melhor custo por mês e transformação mais profunda.</p>
         <ul class="plano-items">
           <li>Tudo do plano trimestral</li>
           <li>Periodização de longo prazo</li>
@@ -1023,15 +1043,19 @@
       </details>
       <details>
         <summary>Como recebo a dieta e o treino?</summary>
-        <p class="faq-body">Tudo é entregue no aplicativo SamplaFit, acessível pelo celular. Você visualiza suas refeições, treinos, e histórico de evolução em um só lugar... Sem planilha, sem PDF.</p>
+        <p class="faq-body">Tudo é entregue pelo aplicativo SamplaFit, acessível pelo celular. Você visualiza suas refeições, séries, cargas e histórico de evolução em um só lugar — sem planilha, sem PDF.</p>
       </details>
       <details>
         <summary>Tenho restrições alimentares, você adapta a dieta?</summary>
-        <p class="faq-body">Sim. A dieta é calculada a partir do seu contexto e das suas preferências reais. Não existe um plano padrão que eu envio para todo mundo, cada aluno tem o seu.</p>
+        <p class="faq-body">Sim. A dieta é calculada a partir do seu mapeamento metabólico e das suas preferências reais. Não existe um plano padrão que eu envio para todo mundo — cada aluno tem o seu.</p>
       </details>
       <details>
         <summary>O suporte é com você ou com uma equipe?</summary>
         <p class="faq-body">Direto comigo, de segunda a sexta. Não tem intermediário nem equipe respondendo no seu lugar. Isso é um dos motivos pelo qual trabalho com número limitado de alunos.</p>
+      </details>
+      <details>
+        <summary>Tem fidelidade ou multa para cancelar?</summary>
+        <p class="faq-body">Não existe multa. O compromisso é com o resultado, não com um contrato. Mas como a periodização funciona em ciclos, abandonar antes do prazo significa perder o melhor período de retorno do investimento.</p>
       </details>
     </div>
   </div>
@@ -1041,5 +1065,83 @@
   Nutri Deividi S.F. &nbsp;·&nbsp; Valentim Gentil, SP &nbsp;·&nbsp; Desde 2017
 </footer>
 
+<script>
+  // ── Carrossel de depoimentos ──────────────────
+  const carousel  = document.getElementById('carousel');
+  const dots      = document.querySelectorAll('.carousel-dot');
+
+  if (carousel && dots.length) {
+
+    // Drag/arraste no desktop
+    let isDragging = false, startX = 0, scrollStart = 0;
+
+    carousel.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX;
+      scrollStart = carousel.scrollLeft;
+      carousel.classList.add('grabbing');
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      carousel.scrollLeft = scrollStart - (e.pageX - startX);
+    });
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      carousel.classList.remove('grabbing');
+    });
+
+    // Atualiza dot ativo conforme scroll
+    carousel.addEventListener('scroll', () => {
+      const slides    = carousel.querySelectorAll('.print-slide');
+      const slideW    = slides[0].offsetWidth + 20; // gap = 20px
+      const idx       = Math.round(carousel.scrollLeft / slideW);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+
+    // Clique nos dots
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const slides = carousel.querySelectorAll('.print-slide');
+        const slideW = slides[0].offsetWidth + 20;
+        carousel.scrollTo({ left: parseInt(dot.dataset.index) * slideW, behavior: 'smooth' });
+      });
+    });
+  }
+</script>
+
+<script>
+  const carousel = document.getElementById('carousel');
+  const dots     = document.querySelectorAll('.carousel-dot');
+
+  if (carousel && dots.length) {
+    let isDragging = false, startX = 0, scrollStart = 0;
+
+    carousel.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.pageX; scrollStart = carousel.scrollLeft;
+      carousel.classList.add('grabbing');
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      carousel.scrollLeft = scrollStart - (e.pageX - startX);
+    });
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      carousel.classList.remove('grabbing');
+    });
+
+    carousel.addEventListener('scroll', () => {
+      const slideW = carousel.querySelector('.print-slide').offsetWidth + 20;
+      const idx    = Math.round(carousel.scrollLeft / slideW);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const slideW = carousel.querySelector('.print-slide').offsetWidth + 20;
+        carousel.scrollTo({ left: parseInt(dot.dataset.index) * slideW, behavior: 'smooth' });
+      });
+    });
+  }
+</script>
 </body>
 </html>
