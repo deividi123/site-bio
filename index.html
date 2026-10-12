@@ -119,7 +119,7 @@
 
     /* ── Layout base ── */
     .wrap {
-      max-width: 1100px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 48px;
     }
@@ -163,12 +163,21 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 80px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      column-gap: 56px;
+      row-gap: 0;
       align-items: center;
     }
 
-    .hero-text { order: 1; }
+    .hero-text { display: contents; }
+    .hero-kicker, .hero-text h1, .hero-text p,
+    .hero-text .cta-btn, .hero-text .cta-note { grid-column: 1; }
+    .hero-kicker { grid-row: 1; }
+    .hero-text h1 { grid-row: 2; }
+    .hero-photo { grid-column: 2; grid-row: 1 / span 5; align-self: center; }
+    .hero-text p { grid-row: 3; }
+    .hero-text .cta-btn { grid-row: 4; justify-self: start; }
+    .hero-text .cta-note { grid-row: 5; }
 
     .hero-kicker {
       font-family: 'Barlow Condensed', sans-serif;
@@ -203,25 +212,16 @@
     }
 
     .hero-photo img {
-      width: 100%;
-      border-radius: 2px;
       display: block;
-      object-fit: contain;   /* não corta imagem paisagem */
-      background: var(--gray-100);
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
     }
 
-    /* Desktop: só mostra a foto da coluna direita */
-    .hero-photo-mobile { display: none; }
-    .hero-photo-desktop { display: block; }
-
-    .hero-photo::after {
-      content: '';
-      position: absolute;
-      inset: 12px -12px -12px 12px;
-      border: 1.5px solid var(--gold);
-      border-radius: 2px;
-      z-index: -1;
-    }
+    .hero-photo::after { display: none; }
 
     /* ── SEÇÃO 2: PROBLEMA ── */
     #problema { background: var(--gray-100); }
@@ -647,20 +647,22 @@
       h3 { font-size: clamp(17px, 5vw, 22px); }
       p  { font-size: 15px; line-height: 1.65; }
 
-      /* Hero — foto acima, texto abaixo */
+      /* Hero — imagem única entre o título e o subtítulo */
       #hero { padding: 48px 0 52px; }
       .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 28px;
+        grid-template-columns: minmax(0, 1fr);
+        column-gap: 0;
+        row-gap: 0;
       }
-      /* Mobile: mostra foto inline (entre h1 e p), esconde coluna direita */
-      .hero-photo-mobile  { display: block; width: 100%; margin: 16px 0; }
-      .hero-photo-desktop { display: none; }
-      .hero-photo::after  { display: none; }
-      .hero-photo img     { border-radius: 4px; }
-      .hero-kicker { font-size: 11px; margin-bottom: 12px; }
-      .hero-text h1 { margin-bottom: 14px; }
-      .hero-text p  { font-size: 15px; margin-bottom: 24px; }
+      .hero-kicker, .hero-text h1, .hero-photo, .hero-text p,
+      .hero-text .cta-btn, .hero-text .cta-note { grid-column: 1; }
+      .hero-kicker { grid-row: 1; font-size: 11px; margin-bottom: 12px; }
+      .hero-text h1 { grid-row: 2; margin-bottom: 14px; }
+      .hero-photo { grid-row: 3; width: 100%; margin: 8px 0 16px; }
+      .hero-text p { grid-row: 4; font-size: 15px; margin-bottom: 24px; }
+      .hero-text .cta-btn { grid-row: 5; justify-self: stretch; }
+      .hero-text .cta-note { grid-row: 6; }
+      .hero-photo img { background: transparent; border: 0; border-radius: 0; }
 
       /* CTA — largura total no mobile */
       .cta-btn {
@@ -756,14 +758,6 @@
         <span class="hero-kicker">Consultoria online · Nutrição & Treino</span>
         <h1>Alcance um shape mais <em>seco e volumoso</em> com um plano adaptado à sua rotina</h1>
 
-        <!-- Foto aparece aqui no mobile (entre h1 e p), escondida no desktop -->
-        <div class="hero-photo hero-photo-mobile">
-          <img src="assets/images/hero.webp"
-               alt="Deividi S. Ferreira avaliando um aluno durante consultoria"
-               width="630" height="450"
-               fetchpriority="high">
-        </div>
-
         <p>É a mesma metodologia que uso em atletas de fisiculturismo, ajustada para construir o seu melhor físico sem extremismos. Nutrição e treino sob medida, com suporte direto comigo de segunda a sexta.</p>
         <a class="cta-btn"
            href="https://wa.me/5517991095961?text=Quero+saber+mais+sobre+a+consultoria+online"
@@ -777,14 +771,9 @@
       </div>
 
       <div class="hero-photo">
-        <!--
-          Foto avaliando um aluno.
-          Salve em: assets/images/hero.webp
-          Proporção recomendada: 4:5 (ex: 800×1000px)
-        -->
         <img src="assets/images/hero.webp"
              alt="Deividi S. Ferreira avaliando um aluno durante consultoria"
-             width="400" height="500"
+             width="800" height="1000"
              fetchpriority="high">
       </div>
 
