@@ -199,7 +199,6 @@
     }
 
     .hero-photo {
-      order: 2;
       position: relative;
     }
 
@@ -207,10 +206,13 @@
       width: 100%;
       border-radius: 2px;
       display: block;
-      aspect-ratio: 630/450;
-      object-fit: cover;
+      object-fit: contain;   /* não corta imagem paisagem */
       background: var(--gray-100);
     }
+
+    /* Desktop: só mostra a foto da coluna direita */
+    .hero-photo-mobile { display: none; }
+    .hero-photo-desktop { display: block; }
 
     .hero-photo::after {
       content: '';
@@ -651,16 +653,11 @@
         grid-template-columns: 1fr;
         gap: 28px;
       }
-      .hero-photo {
-        order: 2;
-        max-width: 100%;
-        margin: 0 auto;
-      }
-      .hero-photo::after { display: none; }
-      .hero-photo img {
-        aspect-ratio: 630/450;
-        border-radius: 4px;
-      }
+      /* Mobile: mostra foto inline (entre h1 e p), esconde coluna direita */
+      .hero-photo-mobile  { display: block; width: 100%; margin: 16px 0; }
+      .hero-photo-desktop { display: none; }
+      .hero-photo::after  { display: none; }
+      .hero-photo img     { border-radius: 4px; }
       .hero-kicker { font-size: 11px; margin-bottom: 12px; }
       .hero-text h1 { margin-bottom: 14px; }
       .hero-text p  { font-size: 15px; margin-bottom: 24px; }
@@ -757,8 +754,17 @@
 
       <div class="hero-text">
         <span class="hero-kicker">Consultoria online · Nutrição & Treino</span>
-        <h1>Condicionamento estético de elite, <em>adaptado para a sua rotina</em></h1>
-        <p>O método exato que uso com atletas de competição, ajustado para construir o seu melhor físico sem extremismos. Nutrição e treino sob medida, com suporte direto — de segunda a sexta.</p>
+        <h1>Alcance um shape mais <em>seco e volumoso</em> com um plano adaptado à sua rotina</h1>
+
+        <!-- Foto aparece aqui no mobile (entre h1 e p), escondida no desktop -->
+        <div class="hero-photo hero-photo-mobile">
+          <img src="assets/images/hero.webp"
+               alt="Deividi S. Ferreira avaliando um aluno durante consultoria"
+               width="630" height="450"
+               fetchpriority="high">
+        </div>
+
+        <p>É a mesma metodologia que uso em atletas de fisiculturismo, ajustada para construir o seu melhor físico sem extremismos. Nutrição e treino sob medida, com suporte direto comigo de segunda a sexta.</p>
         <a class="cta-btn"
            href="https://wa.me/5517991095961?text=Quero+saber+mais+sobre+a+consultoria+online"
            target="_blank" rel="noopener noreferrer">
